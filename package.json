@@ -1,0 +1,58 @@
+{
+  "name": "electron-vue",
+  "version": "0.1.0",
+  "private": true,
+  "main": "./electron/main.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "electron:dev": "concurrently vite \"electron .\"",
+    "electron:build": "npm run build && electron-builder"
+  },
+  "dependencies": {
+    "@vitejs/plugin-legacy": "^5.4.2",
+    "vue": "^3.4.29",
+    "vue-router": "^4.3.3"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.5",
+    "concurrently": "^9.0.1",
+    "electron": "^32.1.0",
+    "electron-builder": "^25.0.5",
+    "vite": "^5.3.1"
+  },
+  "build": {
+    "appId": "com.electron.desktop",
+    "productName": "海洋图集",
+    "asar": true,
+    "copyright": "Copyright © 2022 electron",
+    "directories": {
+      "output": "appClient"
+    },
+    "files": [
+      "dist",
+      "electron/**/*"
+    ],
+    "mac": {
+      "target": [
+        "dmg"
+      ]
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  }
+}
